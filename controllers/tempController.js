@@ -1,3 +1,0 @@
-exports.tempFunction = (req, res) => {
-
-}

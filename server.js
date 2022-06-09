@@ -28,7 +28,7 @@ app.use(cors({
 app.use(express.json());
 
 // Define Routes
-app.use('/api/tempRoute', require('./routes/tempRoute'));
+app.use('/api/user', require('./routes/previewRoutes'));
 
 const PORT = process.env.PORT || 5000;
 
