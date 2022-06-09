@@ -15,7 +15,7 @@ exports.saveUserdata = async (req, res) => {
     return res.status(400).send(EMPTY_STRING);
   } else {
     await db.query(`
-      INSERT INTO waiting_list (wallet_address, email) VALUES(${walletAddress}, ${email});
+      INSERT INTO waiting_list (wallet_address, email) VALUES('${walletAddress}', '${email}');
     `);
 
     return res.status(201).send(EMPTY_STRING);
