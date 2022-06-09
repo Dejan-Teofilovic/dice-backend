@@ -15,7 +15,7 @@ exports.saveUserdata = async (req, res) => {
     return res.status(400).send(EMPTY_STRING);
   } else {
     await db.query(`
-      INSERT INTO wait_list (wallet_address, email) VALUES(${walletAddress}, ${email})
+      INSERT INTO waiting_list (wallet_address, email) VALUES(${walletAddress}, ${email});
     `);
 
     return res.status(201).send(EMPTY_STRING);
@@ -29,7 +29,7 @@ exports.saveUserdata = async (req, res) => {
  */
 const checkUserExistence = async (walletAddress) => {
   const userdata = await (await db.query(`
-    SELECT * FROM wait_list WHERE wallet_address = '${walletAddress}'
+    SELECT * FROM waiting_list WHERE wallet_address = '${walletAddress}'
   `))[0];
 
   if (userdata) {
