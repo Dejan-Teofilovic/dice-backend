@@ -1,0 +1,29 @@
+{
+  "name": "dice-backend",
+  "version": "1.0.0",
+  "description": "dice description",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mr-new-0509/dice-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mr-new-0509/dice-backend/issues"
+  },
+  "homepage": "https://github.com/mr-new-0509/dice-backend#readme",
+  "dependencies": {
+    "axios": "^0.26.0",
+    "config": "^3.3.7",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "express-validator": "^6.14.0",
+    "nodemon": "^2.0.16"
+  }
+}
