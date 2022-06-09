@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const path = require('path');
+const cors = require('cors');
 const db = require('./utils/db');
 
 const app = express();
@@ -17,6 +18,11 @@ try {
   console.error(err.message);
   process.exit(1);
 }
+
+// Avoid cors error
+app.use(cors({
+  origin: '*'
+}));
 
 // Init Middleware
 app.use(express.json());
