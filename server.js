@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const cors = require('cors');
 const db = require('./utils/db');
+const { allowedNodeEnvironmentFlags } = require('process');
 
 const app = express();
 
@@ -29,6 +30,7 @@ app.use(express.json());
 
 // Define Routes
 app.use('/api/preview', require('./routes/previewRoutes'));
+app.use('/api/site', require('./routes/siteRoutes'));
 
 const PORT = process.env.PORT || 5000;
 
