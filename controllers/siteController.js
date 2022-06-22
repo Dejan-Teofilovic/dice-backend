@@ -2,7 +2,7 @@ const db = require("../utils/db");
 const { checkOrderExistence } = require("../utils/functions");
 const { SUCCESS, FAILED } = require("../utils/constants");
 
-exports.createOrder = async (req, res) => {
+exports.saveOrder = async (req, res) => {
   const { walletAddress, email, message, nft } = req.body;
 
   const orderExistence = await checkOrderExistence(walletAddress, email, nft.id);

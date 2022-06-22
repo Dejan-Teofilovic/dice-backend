@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const { createOrder } = require('../controllers/siteController');
+const { saveOrder } = require('../controllers/siteController');
 
-router.post('/createOrder', createOrder);
+router.post('/saveOrder', saveOrder);
 
 module.exports = router;
