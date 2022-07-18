@@ -1,4 +1,3 @@
-const nodemailer = require('nodemailer');
 const db = require("../utils/db");
 const { checkOrderExistence } = require("../utils/functions");
 const { SUCCESS, FAILED } = require("../utils/constants");
