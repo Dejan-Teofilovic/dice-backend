@@ -1,5 +1,5 @@
 const db = require("../utils/db");
-const transporter = require("../utils/transporter");
+// const transporter = require("../utils/transporter");
 const { checkOrderExistence } = require("../utils/functions");
 const { SUCCESS, FAILED } = require("../utils/constants");
 
@@ -15,7 +15,7 @@ exports.saveOrder = async (req, res) => {
       SET message = '${message}', nft = '${JSON.stringify(nft)}'
       WHERE wallet_address = '${walletAddress}' AND email = '${email}' AND nft_id = '${nft.id}' AND name = '${name}';
     `).then(() => {
-      sendEmailToAdmin(email);
+      // sendEmailToAdmin(email);
       return res.status(200).send(SUCCESS);
     }).catch(error => {
       console.log('# create error => ', error);
@@ -27,7 +27,7 @@ exports.saveOrder = async (req, res) => {
       INSERT INTO orders (wallet_address, email, message, nft_id, nft, name) 
       VALUES('${walletAddress}', '${email}', '${message}', '${nft.id}', '${JSON.stringify(nft)}', '${name}');
     `).then(() => {
-      sendEmailToAdmin(email);
+      // sendEmailToAdmin(email);
       return res.status(201).send(SUCCESS);
     }).catch(error => {
       console.log('# update error => ', error);
@@ -36,18 +36,18 @@ exports.saveOrder = async (req, res) => {
   }
 };
 
-const sendEmailToAdmin = (from) => {
-  const mailOptions = {
-    from: from,
-    to: 'atsuokoizumi@gmail.com',
-    subject: 'Sending Email using Node.js',
-    text: 'That was easy!'
-  };
-  transporter.sendMail(mailOptions, function (error, info) {
-    if (error) {
-      console.log(error);
-    } else {
-      console.log('Email sent: ' + info.response);
-    }
-  });
-};
+// const sendEmailToAdmin = (from) => {
+//   const mailOptions = {
+//     from: from,
+//     to: 'atsuokoizumi@gmail.com',
+//     subject: 'Sending Email using Node.js',
+//     text: 'That was easy!'
+//   };
+//   transporter.sendMail(mailOptions, function (error, info) {
+//     if (error) {
+//       console.log(error);
+//     } else {
+//       console.log('Email sent: ' + info.response);
+//     }
+//   });
+// };
