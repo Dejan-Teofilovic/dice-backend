@@ -1,4 +1,5 @@
 const db = require("../utils/db");
+const transporter = require("../utils/transporter");
 const { checkOrderExistence } = require("../utils/functions");
 const { SUCCESS, FAILED } = require("../utils/constants");
 
