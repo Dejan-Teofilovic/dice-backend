@@ -3,7 +3,7 @@ const { checkOrderExistence } = require("../utils/functions");
 const { SUCCESS, FAILED } = require("../utils/constants");
 
 exports.saveOrder = async (req, res) => {
-  const { walletAddress, email, message, nft } = req.body;
+  const { walletAddress, email, message, nft, name } = req.body;
 
   const orderExistence = await checkOrderExistence(walletAddress, email, nft.id);
 
@@ -12,7 +12,7 @@ exports.saveOrder = async (req, res) => {
     db.query(`
       UPDATE orders
       SET message = '${message}', nft = '${JSON.stringify(nft)}'
-      WHERE wallet_address = '${walletAddress}' AND email = '${email}' AND nft_id = '${nft.id}';
+      WHERE wallet_address = '${walletAddress}' AND email = '${email}' AND nft_id = '${nft.id}' AND name = '${name}';
     `).then(() => {
       return res.status(200).send(SUCCESS);
     }).catch(error => {
@@ -22,8 +22,8 @@ exports.saveOrder = async (req, res) => {
   } else {
     //  Else create new one.
     db.query(`
-      INSERT INTO orders (wallet_address, email, message, nft_id, nft) 
-      VALUES('${walletAddress}', '${email}', '${message}', '${nft.id}', '${JSON.stringify(nft)}');
+      INSERT INTO orders (wallet_address, email, message, nft_id, nft, name) 
+      VALUES('${walletAddress}', '${email}', '${message}', '${nft.id}', '${JSON.stringify(nft)}', '${name}');
     `).then(() => {
       return res.status(201).send(SUCCESS);
     }).catch(error => {
