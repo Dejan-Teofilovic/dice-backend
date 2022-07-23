@@ -31,6 +31,7 @@ app.use(express.json());
 // Define Routes
 app.use('/api/preview', require('./routes/previewRoutes'));
 app.use('/api/site', require('./routes/siteRoutes'));
+app.use('/api/auth', require('./routes/adminRoutes'));
 
 const PORT = process.env.PORT || 5000;
 
