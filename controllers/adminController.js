@@ -32,3 +32,12 @@ exports.login = async (req, res) => {
 exports.checkExpirationOfToken = (req, res) => {
   return res.status(200).send(true);
 };
+
+exports.getAllWaitingList = async (req, res) => {
+  const waitingList = await db.query(`SELECT * FROM waiting_list`);
+  return res.status(200).send(waitingList);
+};
+
+exports.getAllOrders = async (req, res) => {
+  const orders = await db.query(`SELECT * FROM orders`);
+};
