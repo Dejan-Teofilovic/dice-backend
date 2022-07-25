@@ -38,6 +38,25 @@ exports.getAllWaitingList = async (req, res) => {
   return res.status(200).send(waitingList);
 };
 
+exports.getAllOrderStatuses = async (req, res) => {
+  const orderStatuses = await db.query(`SELECT * FROM order_statuses`);
+  return res.status(200).send(orderStatuses);
+};
+
 exports.getAllOrders = async (req, res) => {
-  const orders = await db.query(`SELECT * FROM orders`);
+  const orders = await db.query(`
+    SELECT 
+      orders.id, 
+      orders.wallet_address, 
+      orders.email, 
+      orders.message, 
+      orders.nft_image, 
+      orders.name, 
+      orders.goal_price, 
+      orders.income_price, 
+      orders.id_order_status
+    FROM orders
+  `);
+  console.log('# orders => ', orders);
+  return res.status(200).send(orders);
 };
