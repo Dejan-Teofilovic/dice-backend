@@ -57,7 +57,6 @@ exports.getAllOrders = async (req, res) => {
       orders.id_order_status
     FROM orders
   `);
-  console.log('# orders => ', orders);
   return res.status(200).send(orders);
 };
 
@@ -65,18 +64,31 @@ exports.changeOrderStatus = async (req, res) => {
   const { orderId } = req.params;
   const { orderStatusId } = req.body;
 
-  console.log('# orderId => ', typeof orderId);
-  console.log('# orderStatusId => ', typeof orderStatusId);
-
   try {
     await db.query(`UPDATE orders SET id_order_status = ${orderStatusId} WHERE id = ${Number(orderId)}`);
     return res.status(200).send(SUCCESS);
-  } catch(error) {
-    console.log('# error => ', error);
+  } catch (error) {
     return res.status(500).send(FAILED);
   }
+};
 
+exports.getOrderById = async (req, res) => {
+  const { id } = req.params;
 
+  const order = await (await db.query(`
+    SELECT
+      orders.id, 
+      orders.wallet_address, 
+      orders.email, 
+      orders.message, 
+      orders.nft_image, 
+      orders.name, 
+      orders.goal_price, 
+      orders.income_price, 
+      orders.id_order_status
+    FROM orders
+    WHERE id = ${id}
+  `))[0];
 
-
+  return res.status(200).send(order);
 };
