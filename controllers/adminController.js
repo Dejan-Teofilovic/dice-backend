@@ -2,7 +2,7 @@ const bcrypt = require('bcryptjs');
 const config = require('config');
 const jwt = require('jsonwebtoken');
 const db = require('../utils/db');
-const { MESSAGE_INVALID_CREDENTIALS, MESSAGE_SERVER_ERROR } = require('../utils/constants');
+const { MESSAGE_INVALID_CREDENTIALS, MESSAGE_SERVER_ERROR, SUCCESS, FAILED } = require('../utils/constants');
 
 exports.login = async (req, res) => {
   const { email, password } = req.body;
@@ -59,4 +59,24 @@ exports.getAllOrders = async (req, res) => {
   `);
   console.log('# orders => ', orders);
   return res.status(200).send(orders);
+};
+
+exports.changeOrderStatus = async (req, res) => {
+  const { orderId } = req.params;
+  const { orderStatusId } = req.body;
+
+  console.log('# orderId => ', typeof orderId);
+  console.log('# orderStatusId => ', typeof orderStatusId);
+
+  try {
+    await db.query(`UPDATE orders SET id_order_status = ${orderStatusId} WHERE id = ${Number(orderId)}`);
+    return res.status(200).send(SUCCESS);
+  } catch(error) {
+    console.log('# error => ', error);
+    return res.status(500).send(FAILED);
+  }
+
+
+
+
 };
