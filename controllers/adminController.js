@@ -2,7 +2,12 @@ const bcrypt = require('bcryptjs');
 const config = require('config');
 const jwt = require('jsonwebtoken');
 const db = require('../utils/db');
-const { MESSAGE_INVALID_CREDENTIALS, MESSAGE_SERVER_ERROR, SUCCESS, FAILED } = require('../utils/constants');
+const { 
+  MESSAGE_INVALID_CREDENTIALS, 
+  MESSAGE_SERVER_ERROR, 
+  SUCCESS, 
+  FAILED 
+} = require('../utils/constants');
 
 exports.login = async (req, res) => {
   const { email, password } = req.body;
