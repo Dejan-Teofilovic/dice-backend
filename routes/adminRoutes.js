@@ -7,11 +7,13 @@ const {
   getAllOrders,
   getAllOrderStatuses,
   changeOrderStatus,
-  getOrderById
+  getOrderById,
+  signup
 } = require('../controllers/adminController');
 const authMiddleware = require('../middlewares/authMiddleware');
 
 router.post('/login', login);
+router.post('/signup', signup);
 router.get('/check-expiration-of-token', authMiddleware, checkExpirationOfToken);
 router.get('/get-all-waiting-list', authMiddleware, getAllWaitingList);
 router.get('/get-all-order-statuses', authMiddleware, getAllOrderStatuses);
