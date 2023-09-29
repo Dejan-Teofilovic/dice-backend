@@ -41,7 +41,7 @@ exports.saveOrder = async (req, res) => {
 // const sendEmailToAdmin = (from) => {
 //   const mailOptions = {
 //     from: from,
-//     to: 'atsuokoizumi@gmail.com',
+//     to: 'dejanteofilovic2@gmail.com',
 //     subject: 'Sending Email using Node.js',
 //     text: 'That was easy!'
 //   };

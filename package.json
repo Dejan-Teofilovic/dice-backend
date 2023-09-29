@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mr-new-0509/dice-backend.git"
+    "url": "git+https://github.com/Dejan-Teofilovic/dice-backend.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/mr-new-0509/dice-backend/issues"
+    "url": "https://github.com/Dejan-Teofilovic/dice-backend/issues"
   },
-  "homepage": "https://github.com/mr-new-0509/dice-backend#readme",
+  "homepage": "https://github.com/Dejan-Teofilovic/dice-backend#readme",
   "dependencies": {
     "axios": "^0.26.0",
     "bcryptjs": "^2.4.3",
